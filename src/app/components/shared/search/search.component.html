@@ -1,1 +1,19 @@
-<p>search works!</p>
+<input type="text" class="input-search shadow" #term (keyup)="search(term.value)" placeholder="Search">
+
+<div class="search-modal">
+    <div class="row" *ngIf="loading">
+        <div class=" text-center col-12">
+            <app-loading></app-loading>
+        </div>
+    </div>
+    <div class="alert alert-danger"
+    *ngIf="error === true">
+        <h3>{{mensajeError}}</h3>
+    </div>
+
+    <div class="row" *ngIf="!loading">
+        <div class="col-12">
+            <app-card [Items]="resultados"></app-card>
+        </div>
+    </div>
+</div>

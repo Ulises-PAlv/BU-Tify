@@ -15,3 +15,21 @@
 .active {
     background-color: orangered !important;
 }
+
+.search {
+    cursor: pointer;
+}
+
+.search:hover {
+    animation-name: search-animation;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 0.75s;
+}
+
+@keyframes search-animation {
+    0%   {margin-bottom: 0.8rem;}
+    25%  {margin-bottom: 1.5rem;}
+    50%  {margin-bottom: 1.8rem;}
+    100% {margin-bottom: 1.5rem;}
+}

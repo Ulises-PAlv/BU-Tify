@@ -1,0 +1,32 @@
+.input-search {
+    width: 100%;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+    margin: 1rem auto;
+}
+
+.input-search:focus {
+    background-color: rgba(255, 68, 0, 0.5);
+}
+
+.input-search:focus-within {
+    border-color: orangered;
+}
+
+.search-modal {
+    position: fixed;
+    top: 55%;
+    left: 0%;
+    z-index: 1000;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    padding: 0.2rem;
+
+    width: 250px;
+    height: 15rem;
+
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0.5rem;
+}

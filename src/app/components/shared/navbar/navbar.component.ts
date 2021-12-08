@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  bandSearch: boolean = false
 
-  constructor() { }
+  constructor() {
+    this.bandSearch = false;
+  }
+
+  showSearch() {
+    this.bandSearch = !this.bandSearch;
+  }
 
   ngOnInit(): void {
   }
-
 }
