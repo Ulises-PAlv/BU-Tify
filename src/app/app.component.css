@@ -1,0 +1,13 @@
+/* ?? MINE-SNIPPET */
+
+app-navbar {
+    position: fixed;
+}
+
+.margin-nav {
+    margin-left: 13rem !important;
+}
+
+.m-nm {
+    padding-right: 3rem !important;
+}

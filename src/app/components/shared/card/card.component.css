@@ -1,0 +1,30 @@
+.card {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.music-card div > img {
+    width: 7rem;
+    border-radius: 0.2rem;
+}
+
+h5 {
+    font-size: 0.9rem;
+    color: orangered;
+    font-weight: bold;
+
+    transition: all .5s ease-in-out;
+}
+
+span {
+    color: black;
+    cursor: pointer;
+}
+
+span:hover {
+    border-bottom: 1px solid orangered;
+}
+
+hr {
+    color: orangered !important;
+}

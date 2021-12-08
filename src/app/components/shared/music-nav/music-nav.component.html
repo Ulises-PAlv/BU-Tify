@@ -1,0 +1,28 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 350px; height: 8000px;">
+    <a href="/" class="
+    d-flex
+    align-items-center
+    mb-3 mb-md-0
+    me-md-auto
+    text-white text-decoration-none
+    ">
+        <svg class="bi me-2" width="20" height="22"></svg>
+        <span class="fs-4">Discover New MUSIC! <i class="fas fa-hand-holding-heart mx-2"></i></span>
+    </a>
+    <hr />
+
+    <div class="row" *ngIf="loading">
+        <div class=" text-center col-12">
+            <app-loading></app-loading>
+        </div>
+    </div>
+    
+    <div class="alert alert-danger"
+    *ngIf="error === true">
+        <h3>{{mensajeError}}</h3>
+    </div>
+    
+    <div class="container">
+        <app-card *ngIf="!loading" [Items]="releases"></app-card>
+    </div>
+</div>

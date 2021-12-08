@@ -1,0 +1,35 @@
+<div class="card btn" *ngFor="let item of Items"
+(click)="renderArtist(item)">
+    <img [src]="item.images | noImage" alt="" class="card-img-top">
+    <img [src]="item.images" alt="" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <hr>
+
+        <p class="card-text" *ngIf="item.artists">
+            <span class="badge badge-success m-1" *ngFor="let artist of item.artists">{{artist.name}}</span>
+        </p>
+        <p class="card-text" *ngIf="item.genres">
+            <span class="badge badge-success m-1" *ngFor="let genre of item.genres">{{genre}}</span>
+        </p>
+    </div>
+</div>
+
+<!--
+<div class="music-card" *ngFor="let item of Items" (click)="renderArtist(item)">
+    <div class="row">
+        <img [src]="item.images | noImage" alt="" class="col-6">
+
+        <div class="col-6">
+            <h5 class="card-title">{{item.name}}</h5>
+            <hr>
+            <p class="card-text" *ngIf="item.artists">
+                <span class="badge badge-success m-1" *ngFor="let artist of item.artists">{{artist.name}}</span>
+            </p>
+            <p class="card-text" *ngIf="item.genres">
+                <span class="badge badge-success m-1" *ngFor="let genre of item.genres">{{genre}}</span>
+            </p>
+        </div>
+    </div>
+</div>
+-->

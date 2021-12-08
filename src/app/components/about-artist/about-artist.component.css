@@ -1,0 +1,27 @@
+@import url(../../app.component.css);
+
+.container {
+    padding-top: 3.5rem !important;
+    padding-left: 6.5rem !important;
+}
+
+h3 {
+    color: white;
+}
+
+a {
+    color:orangered;
+}
+
+th, td {
+    color: white;
+}
+
+td {
+    align-items: center;
+    text-align: center;
+}
+
+iframe {
+    margin-top: 2rem;
+}

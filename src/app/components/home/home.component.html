@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+
+<div class="row margin-nav">
+    <div class="col-8 m-nm">
+        <div *ngIf="usrBand === true">
+            <div class="container my-3 mx-5">
+                <app-post [PadrePost]="post" *ngFor="let post of results"></app-post>
+            </div>
+        </div>
+        
+        <div *ngIf="usrBand !== true">
+            <h1 class="text-center">Lo sentimos, requiere un usuario :(</h1>
+        </div>
+    </div>
+
+    <app-music-nav class="col-4"></app-music-nav>
+</div>

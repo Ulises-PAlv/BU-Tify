@@ -1,0 +1,59 @@
+<div class="row bk-nav">
+    <div class="col-4">
+        <div class="login-form">
+            <form>
+                <h2 class="text-center titleOR">Log In <i class="fas fa-door-open"></i></h2>   
+
+                <div class="form-group my-3">
+                    <input type="text" class="form-control" placeholder="Username" required="required"
+                    #user>
+                </div>
+                <div class="form-group my-3">
+                    <input type="password" class="form-control" placeholder="zipcode" required="required"
+                    #passwd>
+                </div>
+
+                <div class="form-group mb-3 d-grid gap-2">
+                    <button type="button" class="btn btn-danger"
+                    (click)="search(user.value, passwd.value)">Log in</button>
+                </div>
+                <div class="clearfix">
+                    <label class="pull-left checkbox-inline d-block text-center"><input type="checkbox"> Remember me</label>
+                </div>        
+            </form>
+
+            <p class="text-center"><a href="#">Create an Account</a></p>
+        </div>
+    </div>
+    <div class="col-7 my-5">
+        <div class="contenedor-sm">
+            <h4>Directivas de BU-Tify...</h4>
+            <hr style="background-color: white;">
+
+            <ul>
+                <li>
+                    <p>De momemento se esta consumiendo una API publica (JSON PlaceHolder) a modo de test, pues solo se esta poniendo a prueba el frontend. Por lo que usaremos usuarios de su DB en lo que creamos la nuestra.</p>
+                    <p>Ejemplo: Bret  >>  92998-3874</p>
+                </li>
+                <li>
+                    <p>Si accedes a home sin logearte te mostrara una página vacia.</p>
+                </li>
+                <li>
+                    <p>Si no saliste con "logout" al volver a comenzar iniciara directamente en home en su cuenta.</p>
+                </li>
+                <li>
+                    <p>No funciona "Remember Me" ni "Create an Account"... por el momento</p>
+                </li>
+                <li>
+                    <p>Se iran agregando mas directivas conforme avance el desarrollo de la app</p>
+                </li>
+                <li>
+                    <p>...</p>
+                </li>
+                <hr>
+
+                <p style="color: orangered; font-weight: bolder;"><i class="fas fa-code-branch mx-2"></i>Disfruta BU-Tify.</p>
+            </ul>
+        </div>
+    </div>
+</div>
