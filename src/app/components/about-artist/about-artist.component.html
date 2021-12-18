@@ -24,7 +24,7 @@
     
         <div class="col-4">
             <button class="btn btn-danger"
-            [routerLink]="['/home']">Return Home</button>
+            [routerLink]="['/home']"><i class="fas fa-home mx-2"></i>Return Home</button>
         </div>
     </div>
     
@@ -33,10 +33,11 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Cáratula</th>
+                        <th>Cover</th>
                         <th>Album</th>
-                        <th>Canción</th>
-                        <th>Vista previa</th>
+                        <th>Track</th>
+                        <th>Preview</th>
+                        <th>Add</th>
                     </tr>
                 </thead>
     
@@ -46,10 +47,13 @@
                             <img [src]="track.album.images | noImage"
                             class="img-thumbnail w-75">
                         </td>
-                        <td>{{track.album.name}}</td>
-                        <td>{{track.name}}</td>
+                        <td><p>{{track.album.name}}</p></td>
+                        <td><p>{{track.name}}</p></td>
                         <td>
                             <iframe [src]="track.uri | secureDOM" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger add" (click)="addTrack(track.id)"><i class="fas fa-plus-circle"></i></button>
                         </td>
                     </tr>
                 </tbody>

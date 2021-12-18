@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { JSONPlaceholderApiService } from 'src/app/services/Test/jsonplaceholder-api.service';
 import { DOCUMENT } from '@angular/common';
+import { API_Values } from 'src/environments/apiconnect';
+import { APIBUtifyService } from 'src/app/services/API-BUtify/api-butify.service';
 
 @Component({
   selector: 'app-home',
@@ -16,18 +18,19 @@ export class HomeComponent implements OnInit {
   errorMsj: string = '';
   nameAlert: string = '';
 
-  constructor(private apiService: JSONPlaceholderApiService, @Inject(DOCUMENT) private document: any) {
+  constructor(private apiService: JSONPlaceholderApiService, @Inject(DOCUMENT) private document: any, private apiBUtify: APIBUtifyService ) {
     const usr = localStorage.getItem('usrTmp') || null;
 
     if (usr !== null) {
       this.usrBand = true;
 
-      this.apiService.getPosts().subscribe((data: any) => {
-        this.results = data;
+      this.apiBUtify.getPosts().subscribe((data: any) => {
+        this.results = data
+        console.log(this.results)
       }, (errorService) => {
         this.error = true;
         this.errorMsj = errorService.error.error.message;
-      });
+      })
     }
   }
 

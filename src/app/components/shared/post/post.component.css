@@ -4,3 +4,47 @@
     color: rebeccapurple !important;
     text-decoration: none;
 }
+
+.modal-comment {
+    width: 22rem;
+    height: 18rem;
+
+    position: fixed;
+    top: 30%;
+    left: 35%;
+
+    border-radius: 0.5rem;
+    padding: 1rem;
+    align-content: center;
+    text-align: center;
+
+    z-index: 1000;
+}
+
+.modal-comment > .container h5 {
+    color: white;
+}
+
+.modal-comment > .container hr {
+    color: white;
+    height: 0.15rem;
+}
+
+.modal-comment > .container textarea {
+    width: 95%;
+    height: 8rem;
+    border-radius: 0.2rem;
+
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    color: orangered;
+}
+
+.row {
+    align-content: center;
+    text-align: center;
+}
+
+.btn-block {
+    width: 100% !important;
+}

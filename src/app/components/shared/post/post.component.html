@@ -1,12 +1,10 @@
 <div class="card" style="width: 50rem;" style="margin-top: 2rem;">
     <div class="card-body my-3">
-        <h3 class="card-title">{{PadrePost.title}}</h3>
-        <div *ngFor="let user of users">
-            <p *ngIf="PadrePost.userId === user.id"><a class="username" (click)="goToUsr(user.id)"><i class="fas fa-map-pin mx-2"></i>{{user.username}}</a>
-            </p>
-        </div>
+        <h3 class="card-title">
+            <a class="username" (click)="goToUsr(PadrePost.UsrName)"><i class="fas fa-user-circle mx-2"></i>{{PadrePost.UsrName}}</a>
+        </h3>
 
-        <p class="card-text">{{PadrePost.body}}</p>
+        <p class="card-text">{{PadrePost.PubText}}</p>
 
         <div *ngIf="commentsBand === true">
             <hr style="color: orangered; height: 0.2rem;">
@@ -14,15 +12,15 @@
             <div *ngIf="comments.length === 0">
                 <h5>There are no comments on this post :(</h5>
             </div>
+            <!-- -->
             <div *ngIf="comments.length !== 0">
                 <table class="table">
                     <tbody>
                         <tr *ngFor="let comment of comments">
                             <td>
-                                <h5 style="color: orangered;">{{comment.name}}</h5>
-                                <p style="color: blue;">User: {{comment.email}}</p>
+                                <h5 style="color: orangered; font-size: 1rem;">{{comment.UsrName}}</h5>
 
-                                <p>{{comment.body}}</p>
+                                <p style="font-size: 0.85rem;">{{comment.CommentText}}</p>
                             </td>
                         </tr>
                     </tbody>
@@ -30,8 +28,29 @@
             </div>
         </div>
 
-        <button type="button" class="btn btn-danger" (click)="seeComments(PadrePost.id)">
+        <button type="button" class="btn btn-danger" (click)="seeComments(PadrePost.PubID)">
             Comments
         </button>
+
+        <button type="button" class="btn btn-outline-danger mx-4" (click)="showCommentModal(PadrePost.PubID)" *ngIf="commentsBand === true">
+            <i class="fas fa-comments mx-2"></i>Add comment
+        </button>
+    </div>
+</div>
+
+<div class="modal-comment bg-dark" *ngIf="bandShowModalComm">
+    <div class="container">
+        <h5 class="text-center">Write a comment</h5>
+        <hr>
+        <textarea name="commentBody" #commentBody></textarea>
+        <br>
+        <div class="row">
+            <div class="col-6 px-2">
+                <button class="btn btn-light btn-block" (click)="addComment(commentBody.value)">Send</button>
+            </div>
+            <div class="col-6 px-2">
+                <button class="btn btn-light btn-block col-6" (click)="bandShowModalComm = false">Return</button>
+            </div>
+        </div>
     </div>
 </div>

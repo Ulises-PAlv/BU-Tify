@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { JSONPlaceholderApiService } from 'src/app/services/Test/jsonplaceholder-api.service';
+import { APIBUtifyService } from 'src/app/services/API-BUtify/api-butify.service';
 import { Router } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-post',
@@ -9,9 +12,13 @@ import { Router } from '@angular/router';
 })
 
 export class PostComponent implements OnInit {
-    comments: any = [];
+  comments: any = [];
   commentsBand: boolean = false;
   users: any = [];
+
+  pubId2Comm: any;
+  bandShowModalComm: boolean = false;
+  usrID: any;
 
   error: boolean = false;
   errorMsj: string = '';
@@ -21,11 +28,13 @@ export class PostComponent implements OnInit {
   @Output() selectedPost: EventEmitter<number>;
 
 
-  constructor(private apiService: JSONPlaceholderApiService, private _router: Router) {
+  constructor(private _router: Router, private butifyService: APIBUtifyService, private cdr: ChangeDetectorRef) {
     this.selectedPost = new EventEmitter();
+    this.usrID = localStorage.getItem('idUsr') || null;
 
-    this.apiService.getUserList().subscribe((data:any) => {
+    this.butifyService.getUsers().subscribe((data: any) => {
       this.users = data;
+      console.log(this.users);
     }, (errorService) => {
       this.error = true;
       this.errorMsj = errorService.error.error.message;
@@ -37,10 +46,9 @@ export class PostComponent implements OnInit {
     if(this.commentsBand === false) {
       this.commentsBand = true;
 
-      this.apiService.getComments(id).subscribe((data: any) => {
+      this.butifyService.getComments(id).subscribe((data: any) => {
         this.comments = data;
         console.log(this.comments);
-        
       }, (errorService) => {
         this.error = true;
         this.errorMsj = errorService.error.error.message;
@@ -50,13 +58,37 @@ export class PostComponent implements OnInit {
     }
   }
 
-  goToUsr(id: any) {
+  goToUsr(name: string) {
+    let id: number = 1
+
+    this.users.forEach((usr: any) => {
+      if(usr.UsrName === name) {
+        id = usr.UsrID;
+      }
+    });
+
     this._router.navigate(['/user', id]);
   }
 
-  // ?? Life cycle ############################################################################################
-  ngOnInit(): void {
-
+  showCommentModal(id: string) {
+    this.pubId2Comm = id;
+    this.bandShowModalComm = !this.bandShowModalComm;
   }
 
+  async addComment(text: any) {
+    let bodyComment = {
+      'BelongPubID': this.pubId2Comm,
+      'CommentText': text,
+      'IdUser': Number(this.usrID)
+    }
+    
+    console.log(bodyComment)
+    this.bandShowModalComm = false;
+
+    this.butifyService.postComment(bodyComment)
+    this.cdr.markForCheck()
+  }
+
+  // ?? Life cycle ############################################################################################
+  ngOnInit(): void { }
 }

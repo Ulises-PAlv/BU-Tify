@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from 'src/app/services/API-Spoty/spotify.service';
+import { APIBUtifyService } from 'src/app/services/API-BUtify/api-butify.service';
 
 @Component({
   selector: 'app-about-artist',
@@ -12,7 +13,7 @@ export class AboutArtistComponent implements OnInit {
   loading: boolean = false;
   tracks: any = [];
 
-  constructor( private _aRoute: ActivatedRoute, private spotify: SpotifyService ) {
+  constructor( private _aRoute: ActivatedRoute, private spotify: SpotifyService, private butifyService: APIBUtifyService ) {
     this._aRoute.params.subscribe( params => {
       this.loading = true;
       this.getArtist(params['id']);
@@ -35,6 +36,16 @@ export class AboutArtistComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  addTrack(track: any) {
+    console.log(track)
+    let id = localStorage.getItem('idUsr') || null
+    let body: any = {
+      "PlaylistName": track,
+      "PubOwnerID": Number(id)
+    }
+
+    this.butifyService.postRolita(body)
   }
+
+  ngOnInit(): void { }
 }
