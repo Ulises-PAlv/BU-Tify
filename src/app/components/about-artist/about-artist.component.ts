@@ -40,8 +40,8 @@ export class AboutArtistComponent implements OnInit {
     console.log(track)
     let id = localStorage.getItem('idUsr') || null
     let body: any = {
-      "PlaylistName": track,
-      "PubOwnerID": Number(id)
+      "NameRolita": track,
+      "IdPlaylist": Number(id)
     }
 
     this.butifyService.postRolita(body)

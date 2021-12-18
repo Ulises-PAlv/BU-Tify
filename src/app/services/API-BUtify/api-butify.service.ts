@@ -47,6 +47,12 @@ export class APIBUtifyService {
     }));
   }
 
+  getPlaylist(id: any) {
+    return this.getQuery(this.environment.q_GET.playlist + id).pipe(map( data => {
+      return data;
+    }));
+  }
+
   postPub(body: any) {
     this._http.post(`${this.environment.url}${this.environment.q_POST.addPost}`, body).toPromise();
   }

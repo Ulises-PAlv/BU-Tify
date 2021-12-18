@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { APIBUtifyService } from 'src/app/services/API-BUtify/api-butify.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
   usrname: any
 
-  constructor(private butifyService: APIBUtifyService) {
+  constructor(private butifyService: APIBUtifyService, private _router: Router) {
     this.bandSearch = false;
     this.bandDropwdown = false;
 
@@ -46,6 +47,12 @@ export class NavbarComponent implements OnInit {
 
     this.butifyService.postPub(body)
     this.bandShowPubModal = false
+  }
+
+  goToUsr() {
+    let id = localStorage.getItem('idUsr')
+    console.log(id)
+    this._router.navigate(['/user', id]);
   }
 
   ngOnInit(): void {
